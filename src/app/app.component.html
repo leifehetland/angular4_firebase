@@ -1,5 +1,6 @@
-<ul *ngIf="author$ | async as author">
-  <li>{{ author.name }}</li>
-  <li>{{ author.age }}</li>
-  <li>{{ author.concerned }}</li>
+<input type="text" (keyup.enter)="add(oneClass)" #oneClass>
+<ul *ngIf="classes$ | async as classes">
+  <li *ngFor="let class of classes">
+    {{ class }}
+  </li>
 </ul>
