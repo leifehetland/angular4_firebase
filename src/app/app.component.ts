@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Subscription } from 'rxjs/Subscription';
 
@@ -7,20 +7,21 @@ import { Subscription } from 'rxjs/Subscription';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnDestroy {
-  classes: any[];
-  subscription: Subscription;
+export class AppComponent {
+  classes$;
 
   constructor(db: AngularFireDatabase) {
-    this.subscription = db.list('/classes')
-      .valueChanges()
-      .subscribe(classes => {
-        this.classes = classes;
-        console.log(this.classes);
-      })
+    this.classes$ = db.list('/classes');
+
+    // this.subscription = db.list('/classes')
+    //   .valueChanges()
+    //   .subscribe(classes => {
+    //     this.classes = classes;
+    //     console.log(this.classes);
+    //   })
   }
 
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
-  }
+  // ngOnDestroy() {
+  //   this.subscription.unsubscribe();
+  // }
 }
