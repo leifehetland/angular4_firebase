@@ -1,7 +1,14 @@
-<button (click)="ngOnDestroy()" >Unsubscribe from Firebase</button>
 
 <ul>
   <li *ngFor="let class of classes$ | async">
     {{ class }}
   </li>
 </ul>
+
+<p>
+  {{ class$ | async | json }}
+</p>
+
+<p>
+  {{ author$ | async | json }}
+</p>
