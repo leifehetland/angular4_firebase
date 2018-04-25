@@ -1,6 +1,11 @@
-<input type="text" (keyup.enter)="add(oneClass)" #oneClass>
-<ul *ngIf="classes$ | async as classes">
-  <li *ngFor="let class of classes">
-    {{ class }}
+<ul>
+  <li *ngFor="let aClass of classes | async">
+    {{ aClass.text }}
+    <input type="text" #updatetext [value]="aClass.text" />
+    <button (click)="update(aClass.key, updatetext.value)">Update</button>
+    <button (click)="delete(aClass.key)">Delete</button>
   </li>
 </ul>
+<input type="text" #oneClass />
+<button (click)="add(oneClass.value)">Add</button>
+<button (click)="deleteEverything()">Delete All</button>
